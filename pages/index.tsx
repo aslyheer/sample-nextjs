@@ -1,10 +1,7 @@
 import type { NextPage } from "next";
+import { TestService } from "../services/test.service";
 export async function getStaticProps() {
-  let data = await (
-    await fetch(
-      "https://hub.dummyapis.com/products?noofRecords=10&idStarts=1001&currency=usd"
-    )
-  ).json();
+  let data = await new TestService().get();
   return {
     props: {
       data,
@@ -17,7 +14,9 @@ const Home: NextPage = (params: any) => {
       <h1>Server Side Rendering</h1>
       <ul>
         {params.data.map((_data: any) => {
-          return <li key={_data.name}> {_data.name}</li>;
+          return (
+            <li key={_data.id}> {new Date(_data.created).toDateString()}</li>
+          );
         })}
       </ul>
     </div>
