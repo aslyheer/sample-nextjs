@@ -1,7 +1,4 @@
 import type { NextPage } from "next";
-import Head from "next/head";
-import Image from "next/image";
-import styles from "../styles/Home.module.css";
 export async function getServerSideProps() {
   let data = await (
     await fetch(
@@ -20,7 +17,7 @@ const Home: NextPage = (params: any) => {
       <h1>Server Side Rendering</h1>
       <ul>
         {params.data.map((_data: any) => {
-          return <li> {_data.name}</li>;
+          return <li key={_data.name}> {_data.name}</li>;
         })}
       </ul>
     </div>
