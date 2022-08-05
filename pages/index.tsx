@@ -1,17 +1,5 @@
 import type { NextPage } from "next";
-// export async function getStaticProps() {
-//   let data = await (
-//     await fetch(
-//       "https://hub.dummyapis.com/products?noofRecords=10&idStarts=1001&currency=usd"
-//     )
-//   ).json();
-//   return {
-//     props: {
-//       data,
-//     },
-//   };
-// }
-export async function getServerSideProps() {
+export async function getStaticProps() {
   let data = await (
     await fetch(
       "https://hub.dummyapis.com/products?noofRecords=10&idStarts=1001&currency=usd"
@@ -24,7 +12,6 @@ export async function getServerSideProps() {
   };
 }
 const Home: NextPage = (params: any) => {
-  console.log(params);
   return (
     <div>
       <h1>Server Side Rendering</h1>
