@@ -1,5 +1,5 @@
 import type { NextPage } from "next";
-export async function getServerSideProps() {
+export async function getStaticProps() {
   let data = await (
     await fetch(
       "https://hub.dummyapis.com/products?noofRecords=10&idStarts=1001&currency=usd"
